@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -13,6 +14,8 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Matrix<T> : ConfigurableCollection<T>, IIndexable<Position<T>>, IEnumerable<Position<T>>
     {
+        private readonly int _containerIndex;
+
         public Position<T> this[int index]
         {
             get
@@ -22,7 +25,7 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
 
-                return new Position<T>(Config);
+                return new Position<T>(Config, _containerIndex);
             }
         }
 
@@ -30,7 +33,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Config.CountContainers; i++)
             {
-                yield return new Position<T>(Config);
+                yield return new Position<T>(Config, _containerIndex);
             }
         }
 
@@ -39,8 +42,9 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Matrix(Configuration<T> config) : base(config)
+        public Matrix(PmcConfiguration<T> config, int containerIndex) : base(config)
         {
+            _containerIndex = containerIndex;
         }
 
         protected override bool IsValidIndex(int i)

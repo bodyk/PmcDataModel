@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PmcDataModel.Models
 {
-    interface IIndexable<T>
+    interface IIndexable<out T>
     {
         T this[int index] { get; }
     }

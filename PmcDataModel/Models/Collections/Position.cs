@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -13,6 +14,8 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Position<T> : ConfigurableCollection<T>, IIndexable<Point<T>>, IEnumerable<Point<T>>
     {
+        private readonly int _containerIndex;
+
         public Point<T> this[int index]
         {
             get
@@ -22,7 +25,7 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
 
-                return new Point<T>(Config);
+                return new Point<T>(GetPointDimension(), Config.DataValue);
             }
         }
 
@@ -30,7 +33,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Config.CountContainers; i++)
             {
-                yield return new Point<T>(Config);
+                yield return new Point<T>(Config.MatrixConfig.DefaultPointDimension, Config.DataValue);
             }
         }
 
@@ -39,13 +42,22 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Position(Configuration<T> config) : base(config)
+        public Position(PmcConfiguration<T> config, int containerIndex) : base(config)
         {
+            _containerIndex = containerIndex;
         }
 
         protected override bool IsValidIndex(int i)
         {
             return i < Config.CountPoints;
+        }
+
+        private PointDimension GetPointDimension()
+        {
+            var conteinerNumberToDimension = Config.MatrixConfig.NumberToDimensionRules
+                .FirstOrDefault(r => r.MatrixNumbers.Contains(_containerIndex));
+
+            return conteinerNumberToDimension?.Dimension ?? Config.MatrixConfig.DefaultPointDimension;
         }
     }
 }

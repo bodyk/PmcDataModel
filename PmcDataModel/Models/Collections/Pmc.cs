@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
-    public enum PosDataType
+    public enum PointDimension
     {
         X,
         XY,
@@ -21,7 +22,7 @@ namespace PmcDataModel.Models.Collections
     public class Pmc<T> : ConfigurableCollection<T>, IIndexable<Container<T>>, IEnumerable<Container<T>>
     {
 
-        Container<T> IIndexable<Container<T>>.this[int index]
+        public Container<T> this[int index]
         {
             get
             {
@@ -34,7 +35,7 @@ namespace PmcDataModel.Models.Collections
             }
         }
 
-        public Pmc(Configuration<T> config) : base(config)
+        public Pmc(PmcConfiguration<T> config) : base(config)
         {
         }
 

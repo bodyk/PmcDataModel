@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
     public abstract class ConfigurableCollection<T>
     {
-        public Configuration<T> Config { get; set; }
+        public PmcConfiguration<T> Config { get; set; }
 
-        protected ConfigurableCollection(Configuration<T> config)
+        protected ConfigurableCollection(PmcConfiguration<T> config)
         {
             Config = config;
         }

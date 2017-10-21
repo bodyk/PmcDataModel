@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PmcDataModel.Configurations;
 using PmcDataModel.Models;
 using PmcDataModel.Models.Collections;
 
 namespace PmcDataModel
 {
     // build containers
-    public class ContainerDeveloper<T>: Developer<T> where T: struct 
+    public class ContainerCollectionDeveloper<T>: Developer<T> where T: struct 
     {
 
-        public ContainerDeveloper(Configuration<T> config) : base(config)
+        public ContainerCollectionDeveloper(PmcConfiguration<T> config) : base(config)
         {
         }
 

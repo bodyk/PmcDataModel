@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -11,18 +13,35 @@ namespace PmcDataModel.Models.Collections
     /// Collection with generic numeral type(number, decimal, double)
     /// </summary>
     /// <typeparam name="T">Stored datatype</typeparam>
-    public class Point<T> : ConfigurableCollection<T>
+    public class Point<T>
     {
-        public T DataValue { get; set; }
+        public List<T> DataValue { get; } = new List<T>();
 
-        public Point(Configuration<T> config) : base(config)
+        public PointDimension Dimension { get; private set; }
+
+        public Point(PointDimension dimension, T dataValue)
         {
-            DataValue = config.DataValue;
+            Dimension = dimension;
+
+            FormPoint(dataValue);
         }
 
-        protected override bool IsValidIndex(int i)
+        private void FormPoint(T dataValue)
         {
-            throw new NotImplementedException();
+            switch (Dimension)
+            {
+                case PointDimension.X:
+                    DataValue.Add(dataValue);
+                    break;
+                case PointDimension.XY:
+                    DataValue.AddRange(Enumerable.Repeat(dataValue, 2));
+                    break;
+                case PointDimension.XYZ:
+                    DataValue.AddRange(Enumerable.Repeat(dataValue, 3));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -18,8 +19,8 @@ namespace PmcDataModel.Models.Collections
                 {
                     throw new IndexOutOfRangeException();
                 }
-
-                return new Matrix<T>(Config);
+                
+                return new Matrix<T>(Config, index);
             }
         }
 
@@ -27,7 +28,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Config.CountContainers; i++)
             {
-                yield return new Matrix<T>(Config);
+                yield return new Matrix<T>(Config, i);
             }
         }
 
@@ -36,7 +37,7 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Container(Configuration<T> config) : base(config)
+        public Container(PmcConfiguration<T> config) : base(config)
         {
         }
 
