@@ -87,7 +87,7 @@ namespace ClientApp
                 Console.WriteLine(i);
             }
 
-            Console.WriteLine(containers[0][1].Count);
+            Console.WriteLine(containers[0][2].Count);
 
             //foreach (var container in containers)
             //{

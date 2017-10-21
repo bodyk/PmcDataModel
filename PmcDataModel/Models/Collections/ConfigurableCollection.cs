@@ -12,6 +12,9 @@ namespace PmcDataModel.Models.Collections
             Config = config;
         }
 
-        protected abstract bool IsValidIndex(int i);
+        protected bool IsValidIndex(int i)
+        {
+            return i < Count;
+        }
     }
 }

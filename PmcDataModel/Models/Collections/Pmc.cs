@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PmcDataModel.Exceptions;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -26,7 +27,7 @@ namespace PmcDataModel.Models.Collections
             {
                 if (!IsValidIndex(index))
                 {
-                    throw new IndexOutOfRangeException();
+                    throw new ContainerIndexOutOfRangeException(index, typeof(Container<int>).Name);
                 }
 
                 return new Container<T>(Config, index);
@@ -48,11 +49,6 @@ namespace PmcDataModel.Models.Collections
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
-        }
-
-        protected override bool IsValidIndex(int i)
-        {
-            return i < Count;
         }
     }
 }

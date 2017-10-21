@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using PmcDataModel.Configurations;
+using PmcDataModel.Exceptions;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -21,7 +22,7 @@ namespace PmcDataModel.Models.Collections
             {
                 if (!IsValidIndex(index))
                 {
-                    throw new IndexOutOfRangeException();
+                    throw new ContainerIndexOutOfRangeException(index, typeof(Matrix<int>).Name);
                 }
                 
                 return new Matrix<T>(Config, _indexInPmc, index);
@@ -44,11 +45,6 @@ namespace PmcDataModel.Models.Collections
         public Container(PmcConfiguration<T> config, int indexInPmc) : base(config)
         {
             _indexInPmc = indexInPmc;
-        }
-
-        protected override bool IsValidIndex(int i)
-        {
-            return i < Count;
         }
     }
 }

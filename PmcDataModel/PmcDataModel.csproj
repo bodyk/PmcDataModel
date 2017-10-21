@@ -51,6 +51,7 @@
     <Compile Include="Configurations\XyzRule.cs" />
     <Compile Include="ContainerCollectionDeveloper.cs" />
     <Compile Include="Developer.cs" />
+    <Compile Include="Exceptions\ContainerIndexOutOfRangeException.cs" />
     <Compile Include="Models\Collections\ConfigurableCollection.cs" />
     <Compile Include="Models\Collections\Container.cs" />
     <Compile Include="Models\Collections\Matrix.cs" />
@@ -63,9 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleHelpers\MatrixNumberToDimension.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

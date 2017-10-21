@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PmcDataModel.Exceptions;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -23,7 +24,7 @@ namespace PmcDataModel.Models.Collections
             {
                 if (!IsValidIndex(index))
                 {
-                    throw new IndexOutOfRangeException();
+                    throw new ContainerIndexOutOfRangeException(index, typeof(Position<int>).Name);
                 }
 
                 return new Position<T>(Config, _indexInPmc, _indexInContainer, index, GetPointDimension());
@@ -47,11 +48,6 @@ namespace PmcDataModel.Models.Collections
         {
             _indexInPmc = indexInPmc;
             _indexInContainer = indexInContainer;
-        }
-
-        protected override bool IsValidIndex(int i)
-        {
-            return i < Count;
         }
 
         private PointDimension GetPointDimension()
