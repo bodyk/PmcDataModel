@@ -21,6 +21,7 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Pmc<T> : ConfigurableCollection<T>, IIndexable<Container<T>>, IEnumerable<Container<T>>
     {
+        public override int Count => Config.CountContainers;
 
         public Container<T> this[int index]
         {
@@ -31,7 +32,7 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
 
-                return new Container<T>(Config);
+                return new Container<T>(Config, index);
             }
         }
 
@@ -41,9 +42,9 @@ namespace PmcDataModel.Models.Collections
 
         public IEnumerator<Container<T>> GetEnumerator()
         {
-            for (var i = 0; i < Config.CountContainers; i++)
+            for (var i = 0; i < Count; i++)
             {
-                yield return new Container<T>(Config);
+                yield return new Container<T>(Config, i);
             }
         }
 
@@ -54,7 +55,7 @@ namespace PmcDataModel.Models.Collections
 
         protected override bool IsValidIndex(int i)
         {
-            return i < Config.CountContainers;
+            return i < Count;
         }
     }
 }

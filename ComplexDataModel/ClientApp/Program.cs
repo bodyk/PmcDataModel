@@ -20,12 +20,12 @@ namespace ClientApp
                 DataValue = 10.5,
                 CountContainers = 2,
                 CountMatrices = 2,
-                CountPositions = 1,
+                CountPositions = 2,
                 CountPoints = 1,
                 MatrixConfig = new MatrixConfiguration
                 {
                     DefaultPointDimension = PointDimension.X,
-                    NumberToDimensionRules = new List<MatrixNumberToDimension>()
+                    MatrixNumberToDimensionRules = new List<MatrixNumberToDimension>()
                     {
                         {
                             new MatrixNumberToDimension
@@ -48,6 +48,21 @@ namespace ClientApp
                             }
                         }
                     }
+                },
+                XyConfig = new XyConfiguration
+                {
+                    Rules = new List<XyRule>
+                    {
+                        new XyRule
+                        {
+                            CountPoints = 5,
+                            Path = new PositionPath
+                            {
+                                MatrixNumber = 0,
+                                PositionNumber = 0
+                            }
+                        }
+                    }
                 }
             };
             Developer<double> dev = new ContainerCollectionDeveloper<double>(conf);
@@ -59,6 +74,8 @@ namespace ClientApp
             {
                 Console.WriteLine(i);
             }
+
+            Console.WriteLine(containers[0][0][1].Count);
 
             //foreach (var container in containers)
             //{

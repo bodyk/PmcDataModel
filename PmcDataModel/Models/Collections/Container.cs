@@ -11,6 +11,10 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Container<T> : ConfigurableCollection<T>, IIndexable<Matrix<T>>, IEnumerable<Matrix<T>>
     {
+        private readonly int _indexInPmc;
+
+        public override int Count => Config.CountMatrices;
+
         public Matrix<T> this[int index]
         {
             get
@@ -20,15 +24,15 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
                 
-                return new Matrix<T>(Config, index);
+                return new Matrix<T>(Config, _indexInPmc, index);
             }
         }
 
         public IEnumerator<Matrix<T>> GetEnumerator()
         {
-            for (var i = 0; i < Config.CountContainers; i++)
+            for (var i = 0; i < Count; i++)
             {
-                yield return new Matrix<T>(Config, i);
+                yield return new Matrix<T>(Config, _indexInPmc, i);
             }
         }
 
@@ -37,13 +41,14 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Container(PmcConfiguration<T> config) : base(config)
+        public Container(PmcConfiguration<T> config, int indexInPmc) : base(config)
         {
+            _indexInPmc = indexInPmc;
         }
 
         protected override bool IsValidIndex(int i)
         {
-            return i < Config.CountMatrices;
+            return i < Count;
         }
     }
 }

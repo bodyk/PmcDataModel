@@ -14,7 +14,11 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Position<T> : ConfigurableCollection<T>, IIndexable<Point<T>>, IEnumerable<Point<T>>
     {
-        private readonly int _containerIndex;
+        private readonly int _indexInPmc;
+        private readonly int _indexInContainer;
+        private readonly int _indexInMatrix;
+
+        public override int Count => GetCountPoints();
 
         public Point<T> this[int index]
         {
@@ -31,7 +35,7 @@ namespace PmcDataModel.Models.Collections
 
         public IEnumerator<Point<T>> GetEnumerator()
         {
-            for (var i = 0; i < Config.CountContainers; i++)
+            for (var i = 0; i < Count; i++)
             {
                 yield return new Point<T>(Config.MatrixConfig.DefaultPointDimension, Config.DataValue);
             }
@@ -42,22 +46,44 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Position(PmcConfiguration<T> config, int containerIndex) : base(config)
+        public Position(PmcConfiguration<T> config, int indexInPmc, int indexInContainer, int indexInMatrix) : base(config)
         {
-            _containerIndex = containerIndex;
+            _indexInPmc = indexInPmc;
+            _indexInContainer = indexInContainer;
+            _indexInMatrix = indexInMatrix;
         }
 
         protected override bool IsValidIndex(int i)
         {
-            return i < Config.CountPoints;
+            return i < Count;
         }
 
         private PointDimension GetPointDimension()
         {
-            var conteinerNumberToDimension = Config.MatrixConfig.NumberToDimensionRules
-                .FirstOrDefault(r => r.MatrixNumbers.Contains(_containerIndex));
+            var conteinerNumberToDimension = Config.MatrixConfig.MatrixNumberToDimensionRules
+                .FirstOrDefault(r => r.MatrixNumbers.Contains(_indexInContainer));
 
             return conteinerNumberToDimension?.Dimension ?? Config.MatrixConfig.DefaultPointDimension;
+        }
+
+        private int GetCountPoints()
+        {
+            if (GetPointDimension() == PointDimension.XY)
+            {
+                var path = new PositionPath
+                {
+                    MatrixNumber = _indexInContainer,
+                    PositionNumber = _indexInMatrix
+                };
+
+                var customPointsNumber = Config.XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
+
+                return customPointsNumber ?? Config.XyConfig.DefaultCountPoints;
+            }
+            else
+            {
+                return Config.CountPoints;
+            }
         }
     }
 }

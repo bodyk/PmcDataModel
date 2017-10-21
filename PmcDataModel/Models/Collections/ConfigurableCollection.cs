@@ -9,6 +9,7 @@ namespace PmcDataModel.Models.Collections
 {
     public abstract class ConfigurableCollection<T>
     {
+        public abstract int Count { get; }
         public PmcConfiguration<T> Config { get; set; }
 
         protected ConfigurableCollection(PmcConfiguration<T> config)

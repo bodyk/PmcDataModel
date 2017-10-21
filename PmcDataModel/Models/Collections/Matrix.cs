@@ -14,7 +14,10 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Matrix<T> : ConfigurableCollection<T>, IIndexable<Position<T>>, IEnumerable<Position<T>>
     {
-        private readonly int _containerIndex;
+        private readonly int _indexInPmc;
+        private readonly int _indexInContainer;
+
+        public override int Count => Config.CountPositions;
 
         public Position<T> this[int index]
         {
@@ -25,15 +28,15 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
 
-                return new Position<T>(Config, _containerIndex);
+                return new Position<T>(Config, _indexInPmc, _indexInContainer, index);
             }
         }
 
         public IEnumerator<Position<T>> GetEnumerator()
         {
-            for (var i = 0; i < Config.CountContainers; i++)
+            for (var i = 0; i < Count; i++)
             {
-                yield return new Position<T>(Config, _containerIndex);
+                yield return new Position<T>(Config, _indexInPmc, _indexInContainer, i);
             }
         }
 
@@ -42,14 +45,15 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Matrix(PmcConfiguration<T> config, int containerIndex) : base(config)
+        public Matrix(PmcConfiguration<T> config, int indexInPmc, int indexInContainer) : base(config)
         {
-            _containerIndex = containerIndex;
+            _indexInPmc = indexInPmc;
+            _indexInContainer = indexInContainer;
         }
 
         protected override bool IsValidIndex(int i)
         {
-            return i < Config.CountMatrices;
+            return i < Count;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace PmcDataModel.Configurations
     public class MatrixConfiguration
     {
         public PointDimension DefaultPointDimension { get; set; } = PointDimension.X;
-        public List<MatrixNumberToDimension> NumberToDimensionRules { get; set; }
+        public List<MatrixNumberToDimension> MatrixNumberToDimensionRules { get; set; }
     }
 }
