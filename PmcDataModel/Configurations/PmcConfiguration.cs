@@ -9,5 +9,6 @@
         public int CountPoints { get; set; }
         public MatrixConfiguration MatrixConfig { get; set; }
         public XyConfiguration XyConfig { get; set; }
+        public XyzConfiguration XyzConfig { get; set; }
     }
 }

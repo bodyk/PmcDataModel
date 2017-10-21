@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using PmcDataModel.Models;
 
 namespace PmcDataModel.Configurations
 {

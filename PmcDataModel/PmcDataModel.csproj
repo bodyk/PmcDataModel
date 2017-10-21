@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\MatrixConfiguration.cs" />
-    <Compile Include="Configurations\XYConfiguration.cs" />
+    <Compile Include="Configurations\XyConfiguration.cs" />
     <Compile Include="Configurations\XyRule.cs" />
+    <Compile Include="Configurations\XyzConfiguration.cs" />
+    <Compile Include="Configurations\XyzRule.cs" />
     <Compile Include="ContainerCollectionDeveloper.cs" />
     <Compile Include="Developer.cs" />
     <Compile Include="Models\Collections\ConfigurableCollection.cs" />
@@ -57,7 +59,7 @@
     <Compile Include="Models\Collections\Position.cs" />
     <Compile Include="Configurations\PmcConfiguration.cs" />
     <Compile Include="Models\IIndexable.cs" />
-    <Compile Include="Models\PositionPath.cs" />
+    <Compile Include="Models\PointPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleHelpers\MatrixNumberToDimension.cs" />
   </ItemGroup>

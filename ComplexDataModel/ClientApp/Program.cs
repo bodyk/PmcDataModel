@@ -20,7 +20,7 @@ namespace ClientApp
                 DataValue = 10.5,
                 CountContainers = 2,
                 CountMatrices = 2,
-                CountPositions = 2,
+                CountPositions = 3,
                 CountPoints = 1,
                 MatrixConfig = new MatrixConfiguration
                 {
@@ -34,7 +34,7 @@ namespace ClientApp
                                 {
                                     0
                                 },
-                                Dimension = PointDimension.XY
+                                Dimension = PointDimension.XYZ
                             }
                         },
                         {
@@ -56,11 +56,23 @@ namespace ClientApp
                         new XyRule
                         {
                             CountPoints = 5,
-                            Path = new PositionPath
+                            Path = new PointPath
                             {
                                 MatrixNumber = 0,
                                 PositionNumber = 0
                             }
+                        }
+                    }
+                },
+                XyzConfig = new XyzConfiguration
+                {
+                    DefaultCountPositions = 4,
+                    Rules = new List<XyzRule>
+                    {
+                        new XyzRule
+                        {
+                            MatrixNumber = 0,
+                            CountPositions = 10
                         }
                     }
                 }
@@ -75,7 +87,7 @@ namespace ClientApp
                 Console.WriteLine(i);
             }
 
-            Console.WriteLine(containers[0][0][1].Count);
+            Console.WriteLine(containers[0][1].Count);
 
             //foreach (var container in containers)
             //{

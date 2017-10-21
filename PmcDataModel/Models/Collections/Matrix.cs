@@ -1,10 +1,8 @@
-﻿using System;
+﻿using PmcDataModel.Configurations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -17,7 +15,7 @@ namespace PmcDataModel.Models.Collections
         private readonly int _indexInPmc;
         private readonly int _indexInContainer;
 
-        public override int Count => Config.CountPositions;
+        public override int Count => GetCountPoints();
 
         public Position<T> this[int index]
         {
@@ -28,7 +26,7 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
 
-                return new Position<T>(Config, _indexInPmc, _indexInContainer, index);
+                return new Position<T>(Config, _indexInPmc, _indexInContainer, index, GetPointDimension());
             }
         }
 
@@ -36,7 +34,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Count; i++)
             {
-                yield return new Position<T>(Config, _indexInPmc, _indexInContainer, i);
+                yield return new Position<T>(Config, _indexInPmc, _indexInContainer, i, GetPointDimension());
             }
         }
 
@@ -54,6 +52,28 @@ namespace PmcDataModel.Models.Collections
         protected override bool IsValidIndex(int i)
         {
             return i < Count;
+        }
+
+        private PointDimension GetPointDimension()
+        {
+            var conteinerNumberToDimension = Config.MatrixConfig.MatrixNumberToDimensionRules
+                .FirstOrDefault(r => r.MatrixNumbers.Contains(_indexInContainer));
+
+            return conteinerNumberToDimension?.Dimension ?? Config.MatrixConfig.DefaultPointDimension;
+        }
+
+        private int GetCountPoints()
+        {
+            if (GetPointDimension() == PointDimension.XYZ)
+            {
+                var customPositionCount = Config.XyzConfig.Rules?.FirstOrDefault(r => r.MatrixNumber == _indexInContainer)?.CountPositions;
+
+                return customPositionCount ?? Config.XyzConfig.DefaultCountPositions;
+            }
+            else
+            {
+                return Config.CountPositions;
+            }
         }
     }
 }

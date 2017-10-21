@@ -1,10 +1,8 @@
-﻿using System;
+﻿using PmcDataModel.Configurations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PmcDataModel.Configurations;
 
 namespace PmcDataModel.Models.Collections
 {
@@ -18,6 +16,8 @@ namespace PmcDataModel.Models.Collections
         private readonly int _indexInContainer;
         private readonly int _indexInMatrix;
 
+        public PointDimension Dimension { get; set; }
+
         public override int Count => GetCountPoints();
 
         public Point<T> this[int index]
@@ -29,7 +29,7 @@ namespace PmcDataModel.Models.Collections
                     throw new IndexOutOfRangeException();
                 }
 
-                return new Point<T>(GetPointDimension(), Config.DataValue);
+                return new Point<T>(Dimension, Config.DataValue);
             }
         }
 
@@ -46,11 +46,13 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Position(PmcConfiguration<T> config, int indexInPmc, int indexInContainer, int indexInMatrix) : base(config)
+        public Position(PmcConfiguration<T> config, int indexInPmc, int indexInContainer, int indexInMatrix, PointDimension dimension) : base(config)
         {
             _indexInPmc = indexInPmc;
             _indexInContainer = indexInContainer;
             _indexInMatrix = indexInMatrix;
+
+            Dimension = dimension;
         }
 
         protected override bool IsValidIndex(int i)
@@ -58,19 +60,11 @@ namespace PmcDataModel.Models.Collections
             return i < Count;
         }
 
-        private PointDimension GetPointDimension()
-        {
-            var conteinerNumberToDimension = Config.MatrixConfig.MatrixNumberToDimensionRules
-                .FirstOrDefault(r => r.MatrixNumbers.Contains(_indexInContainer));
-
-            return conteinerNumberToDimension?.Dimension ?? Config.MatrixConfig.DefaultPointDimension;
-        }
-
         private int GetCountPoints()
         {
-            if (GetPointDimension() == PointDimension.XY)
+            if (Dimension == PointDimension.XY)
             {
-                var path = new PositionPath
+                var path = new PointPath
                 {
                     MatrixNumber = _indexInContainer,
                     PositionNumber = _indexInMatrix

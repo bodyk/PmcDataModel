@@ -1,11 +1,11 @@
 ﻿namespace PmcDataModel.Models
 {
-    public class PositionPath
+    public class PointPath
     {
         public int MatrixNumber { get; set; }
         public int PositionNumber { get; set; }
 
-        public bool Equals(PositionPath other)
+        public bool Equals(PointPath other)
         {
             if (other == null)
                 return false;
