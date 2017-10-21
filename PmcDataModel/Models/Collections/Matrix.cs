@@ -52,24 +52,12 @@ namespace PmcDataModel.Models.Collections
 
         private PointDimension GetPointDimension()
         {
-            var conteinerNumberToDimension = Config.MatrixConfig.MatrixNumberToDimensionRules
-                .FirstOrDefault(r => r.MatrixNumbers.Contains(_indexInContainer));
-
-            return conteinerNumberToDimension?.Dimension ?? Config.MatrixConfig.DefaultPointDimension;
+            return Config.GetPointDimension(_indexInContainer);
         }
 
         private int GetCountPoints()
         {
-            if (GetPointDimension() == PointDimension.XYZ)
-            {
-                var customPositionCount = Config.XyzConfig.Rules?.FirstOrDefault(r => r.MatrixNumber == _indexInContainer)?.CountPositions;
-
-                return customPositionCount ?? Config.XyzConfig.DefaultCountPositions;
-            }
-            else
-            {
-                return Config.CountPositions;
-            }
+            return Config.GetCountPointsXyzRule(_indexInContainer);
         }
     }
 }

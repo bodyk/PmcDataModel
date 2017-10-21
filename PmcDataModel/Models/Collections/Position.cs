@@ -58,22 +58,7 @@ namespace PmcDataModel.Models.Collections
 
         private int GetCountPoints()
         {
-            if (Dimension == PointDimension.XY)
-            {
-                var path = new PointPath
-                {
-                    MatrixNumber = _indexInContainer,
-                    PositionNumber = _indexInMatrix
-                };
-
-                var customPointsNumber = Config.XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
-
-                return customPointsNumber ?? Config.XyConfig.DefaultCountPoints;
-            }
-            else
-            {
-                return Config.CountPoints;
-            }
+            return Config.GetCountPointsXyRule(Dimension, _indexInContainer, _indexInMatrix);
         }
     }
 }
