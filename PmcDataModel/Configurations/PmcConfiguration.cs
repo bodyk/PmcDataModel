@@ -4,9 +4,8 @@ using PmcDataModel.Models.Collections;
 
 namespace PmcDataModel.Configurations
 {
-    public class PmcConfiguration<T>
+    public class PmcConfiguration
     {
-        public T DataValue { get; set; }
         public int CountContainers { get; set; }
         public int CountMatrices { get; set; }
         public int CountPositions { get; set; }
@@ -25,7 +24,7 @@ namespace PmcDataModel.Configurations
 
         public int GetCountPointsXyzRule(int indexInContainer)
         {
-            if (GetPointDimension(indexInContainer) == PointDimension.XYZ)
+            if (GetPointDimension(indexInContainer) == PointDimension.Xyz)
             {
                 var customPositionCount = XyzConfig.Rules?.FirstOrDefault(r => r.MatrixNumber == indexInContainer)?.CountPositions;
 
@@ -39,7 +38,7 @@ namespace PmcDataModel.Configurations
 
         public int GetCountPointsXyRule(PointDimension dimension, int indexInContainer, int indexInMatrix)
         {
-            if (dimension == PointDimension.XY)
+            if (dimension == PointDimension.Xy)
             {
                 var path = new PointPath
                 {

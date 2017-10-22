@@ -9,8 +9,8 @@ namespace PmcDataModel.Models.Collections
     public enum PointDimension
     {
         X,
-        XY,
-        XYZ
+        Xy,
+        Xyz
     }
 
     /// <summary>
@@ -30,11 +30,11 @@ namespace PmcDataModel.Models.Collections
                     throw new ContainerIndexOutOfRangeException(index, typeof(Container<int>).Name);
                 }
 
-                return new Container<T>(Config, index);
+                return new Container<T>(Config, DataValue, index);
             }
         }
 
-        public Pmc(PmcConfiguration<T> config) : base(config)
+        public Pmc(PmcConfiguration config, T value) : base(config, value)
         {
         }
 
@@ -42,7 +42,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Count; i++)
             {
-                yield return new Container<T>(Config, i);
+                yield return new Container<T>(Config, DataValue, i);
             }
         }
 

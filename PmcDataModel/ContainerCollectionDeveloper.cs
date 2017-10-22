@@ -7,13 +7,13 @@ namespace PmcDataModel
     public class ContainerCollectionDeveloper<T>: Developer<T> where T: struct 
     {
 
-        public ContainerCollectionDeveloper(PmcConfiguration<T> config) : base(config)
+        public ContainerCollectionDeveloper(PmcConfiguration config) : base(config)
         {
         }
 
-        public override Pmc<T> Create()
+        public override Pmc<T> Create(T value)
         {
-            return new Pmc<T>(Config);
+            return new Pmc<T>(Config, value);
         }
     }
 }

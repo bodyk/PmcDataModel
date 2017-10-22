@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmcDataModel", "..\PmcDataM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "ClientApp\ClientApp.csproj", "{A8F16B2B-F568-424F-844D-DA24311A35F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PmcDataModel.Tests", "PmcDataModel.Tests\PmcDataModel.Tests.csproj", "{D2C5513A-92A6-44C5-91CA-34A27D328284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A8F16B2B-F568-424F-844D-DA24311A35F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8F16B2B-F568-424F-844D-DA24311A35F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8F16B2B-F568-424F-844D-DA24311A35F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C5513A-92A6-44C5-91CA-34A27D328284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C5513A-92A6-44C5-91CA-34A27D328284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C5513A-92A6-44C5-91CA-34A27D328284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C5513A-92A6-44C5-91CA-34A27D328284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

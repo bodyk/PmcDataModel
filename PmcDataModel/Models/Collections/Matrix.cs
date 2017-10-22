@@ -27,7 +27,7 @@ namespace PmcDataModel.Models.Collections
                     throw new ContainerIndexOutOfRangeException(index, typeof(Position<int>).Name);
                 }
 
-                return new Position<T>(Config, _indexInPmc, _indexInContainer, index, GetPointDimension());
+                return new Position<T>(Config, DataValue, _indexInPmc, _indexInContainer, index, GetPointDimension());
             }
         }
 
@@ -35,7 +35,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Count; i++)
             {
-                yield return new Position<T>(Config, _indexInPmc, _indexInContainer, i, GetPointDimension());
+                yield return new Position<T>(Config, DataValue, _indexInPmc, _indexInContainer, i, GetPointDimension());
             }
         }
 
@@ -44,7 +44,7 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Matrix(PmcConfiguration<T> config, int indexInPmc, int indexInContainer) : base(config)
+        public Matrix(PmcConfiguration config, T value, int indexInPmc, int indexInContainer) : base(config, value)
         {
             _indexInPmc = indexInPmc;
             _indexInContainer = indexInContainer;

@@ -25,7 +25,7 @@ namespace PmcDataModel.Models.Collections
                     throw new ContainerIndexOutOfRangeException(index, typeof(Matrix<int>).Name);
                 }
                 
-                return new Matrix<T>(Config, _indexInPmc, index);
+                return new Matrix<T>(Config, DataValue, _indexInPmc, index);
             }
         }
 
@@ -33,7 +33,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Count; i++)
             {
-                yield return new Matrix<T>(Config, _indexInPmc, i);
+                yield return new Matrix<T>(Config, DataValue, _indexInPmc, i);
             }
         }
 
@@ -42,7 +42,7 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        public Container(PmcConfiguration<T> config, int indexInPmc) : base(config)
+        public Container(PmcConfiguration config, T value, int indexInPmc) : base(config, value)
         {
             _indexInPmc = indexInPmc;
         }

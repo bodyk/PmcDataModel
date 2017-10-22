@@ -28,10 +28,10 @@ namespace PmcDataModel.Models.Collections
                 case PointDimension.X:
                     DataValue.Add(dataValue);
                     break;
-                case PointDimension.XY:
+                case PointDimension.Xy:
                     DataValue.AddRange(Enumerable.Repeat(dataValue, 2));
                     break;
-                case PointDimension.XYZ:
+                case PointDimension.Xyz:
                     DataValue.AddRange(Enumerable.Repeat(dataValue, 3));
                     break;
                 default:

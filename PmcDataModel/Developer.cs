@@ -5,13 +5,13 @@ namespace PmcDataModel
 {
     public abstract class Developer<T>
     {
-        public PmcConfiguration<T> Config { get; set; }
+        public PmcConfiguration Config { get; set; }
 
-        protected Developer(PmcConfiguration<T> config)
+        protected Developer(PmcConfiguration config)
         {
             Config = config;
         }
 
-        public abstract Pmc<T> Create();
+        public abstract Pmc<T> Create(T value);
     }
 }

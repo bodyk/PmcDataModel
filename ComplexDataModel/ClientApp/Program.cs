@@ -15,9 +15,8 @@ namespace ClientApp
     {
         static void Main(string[] args)
         {
-            var conf = new PmcConfiguration<double>
+            var conf = new PmcConfiguration
             {
-                DataValue = 10.5,
                 CountContainers = 2,
                 CountMatrices = 2,
                 CountPositions = 3,
@@ -34,7 +33,7 @@ namespace ClientApp
                                 {
                                     0
                                 },
-                                Dimension = PointDimension.XYZ
+                                Dimension = PointDimension.Xyz
                             }
                         },
                         {
@@ -44,7 +43,7 @@ namespace ClientApp
                                 {
                                     1
                                 },
-                                Dimension = PointDimension.XYZ
+                                Dimension = PointDimension.Xyz
                             }
                         }
                     }
@@ -78,7 +77,7 @@ namespace ClientApp
                 }
             };
             Developer<double> dev = new ContainerCollectionDeveloper<double>(conf);
-            var containers = dev.Create();
+            var containers = dev.Create(10.5);
 
             Console.WriteLine("FirstMatrix: ");
 
