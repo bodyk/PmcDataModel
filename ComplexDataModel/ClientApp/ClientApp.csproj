@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PmcDataModel\PmcDataModel.csproj">
+    <ProjectReference Include="..\PmcDataModel\PmcDataModel.csproj">
       <Project>{9e044cc6-6322-4421-90db-3aea627d6698}</Project>
       <Name>PmcDataModel</Name>
     </ProjectReference>
