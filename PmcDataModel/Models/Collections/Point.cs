@@ -10,10 +10,21 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Point<T>
     {
+        /// <summary>
+        /// 1, 2 or 3 values depend on dimension
+        /// </summary>
         public List<T> DataValue { get; } = new List<T>();
 
+        /// <summary>
+        /// (X, XY, XYZ)
+        /// </summary>
         public PointDimension Dimension { get; private set; }
 
+        /// <summary>
+        /// Point Constructor
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <param name="dataValue"></param>
         public Point(PointDimension dimension, T dataValue)
         {
             Dimension = dimension;

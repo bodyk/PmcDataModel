@@ -14,8 +14,14 @@ namespace PmcDataModel.Models.Collections
     {
         private readonly int _indexInPmc;
 
+        /// <inheritdoc />
         public override int Count => Config.CountMatrices;
 
+        /// <summary>
+        /// Indexer
+        /// </summary>
+        /// <param name="index">Special index</param>
+        /// <exception cref="ContainerIndexOutOfRangeException"></exception>
         public Matrix<T> this[int index]
         {
             get
@@ -29,6 +35,10 @@ namespace PmcDataModel.Models.Collections
             }
         }
 
+        /// <summary>
+        /// Returns enumerator
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Matrix<T>> GetEnumerator()
         {
             for (var i = 0; i < Count; i++)
@@ -42,6 +52,12 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Container Constructor
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="value"></param>
+        /// <param name="indexInPmc"></param>
         public Container(PmcConfiguration config, T value, int indexInPmc) : base(config, value)
         {
             _indexInPmc = indexInPmc;

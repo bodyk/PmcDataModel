@@ -17,10 +17,19 @@ namespace PmcDataModel.Models.Collections
         private readonly int _indexInContainer;
         private readonly int _indexInMatrix;
 
+        /// <summary>
+        /// (X, XY, XYZ)
+        /// </summary>
         public PointDimension Dimension { get; set; }
 
+        /// <inheritdoc />
         public override int Count => GetCountPoints();
 
+        /// <summary>
+        /// Indexer
+        /// </summary>
+        /// <param name="index">Special index</param>
+        /// <exception cref="ContainerIndexOutOfRangeException"></exception>
         public Point<T> this[int index]
         {
             get
@@ -34,6 +43,10 @@ namespace PmcDataModel.Models.Collections
             }
         }
 
+        /// <summary>
+        /// Returns enumerator
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Point<T>> GetEnumerator()
         {
             for (var i = 0; i < Count; i++)
@@ -47,6 +60,15 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Position Constructor
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="value"></param>
+        /// <param name="indexInPmc"></param>
+        /// <param name="indexInContainer"></param>
+        /// <param name="indexInMatrix"></param>
+        /// <param name="dimension"></param>
         public Position(PmcConfiguration config, T value, int indexInPmc, int indexInContainer, int indexInMatrix, PointDimension dimension) : base(config, value)
         {
             _indexInPmc = indexInPmc;

@@ -6,10 +6,22 @@ using PmcDataModel.Exceptions;
 
 namespace PmcDataModel.Models.Collections
 {
+    /// <summary>
+    /// Represent enumeration of point dimensions
+    /// </summary>
     public enum PointDimension
     {
+        /// <summary>
+        /// 1D dimension
+        /// </summary>
         X,
+        /// <summary>
+        /// 2D dimension
+        /// </summary>
         Xy,
+        /// <summary>
+        /// 3D dimension
+        /// </summary>
         Xyz
     }
 
@@ -19,8 +31,14 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Pmc<T> : ConfigurableCollection<T>, IIndexable<Container<T>>, IEnumerable<Container<T>>
     {
+        /// <inheritdoc />
         public override int Count => Config.CountContainers;
 
+        /// <summary>
+        /// Indexer
+        /// </summary>
+        /// <param name="index">Special index</param>
+        /// <exception cref="ContainerIndexOutOfRangeException"></exception>
         public Container<T> this[int index]
         {
             get
@@ -34,10 +52,19 @@ namespace PmcDataModel.Models.Collections
             }
         }
 
+        /// <summary>
+        /// Pmc Constructor
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="value"></param>
         public Pmc(PmcConfiguration config, T value) : base(config, value)
         {
         }
 
+        /// <summary>
+        /// Returns enumerator
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Container<T>> GetEnumerator()
         {
             for (var i = 0; i < Count; i++)

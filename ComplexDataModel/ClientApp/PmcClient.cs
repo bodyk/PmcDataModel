@@ -28,7 +28,7 @@ namespace ClientApp
                         new MatrixNumberToDimension
                         {
                             Dimension = PointDimension.Xy,
-                            MatrixNumbers = new List<int>
+                            IndexInContainer = new List<int>
                             {
                                 0
                             }
@@ -36,7 +36,7 @@ namespace ClientApp
                         new MatrixNumberToDimension
                         {
                             Dimension = PointDimension.X,
-                            MatrixNumbers = new List<int>
+                            IndexInContainer = new List<int>
                             {
                                 1
                             }
@@ -52,7 +52,7 @@ namespace ClientApp
                             CountPoints = 50,
                             Path = new PointPath
                             {
-                                PositionNumber = 0
+                                IndexInMatrix = 0
                             }
                         },
                         new XyRule
@@ -60,7 +60,7 @@ namespace ClientApp
                             CountPoints = 200,
                             Path = new PointPath
                             {
-                                PositionNumber = 1
+                                IndexInMatrix = 1
                             }
                         }
                     },
@@ -76,7 +76,7 @@ namespace ClientApp
                             CountPoints = 1,
                             Path = new PointPath
                             {
-                                PositionNumber = 0
+                                IndexInMatrix = 0
                             }
                         },
                         new XRule
@@ -84,7 +84,7 @@ namespace ClientApp
                             CountPoints = 1,
                             Path = new PointPath
                             {
-                                PositionNumber = 1
+                                IndexInMatrix = 1
                             }
                         }
                     }
@@ -131,7 +131,7 @@ namespace ClientApp
                         new MatrixNumberToDimension
                         {
                             Dimension = PointDimension.Xy,
-                            MatrixNumbers = new List<int>
+                            IndexInContainer = new List<int>
                             {
                                 0, 1, 2, 3, 4
                             }
@@ -139,7 +139,7 @@ namespace ClientApp
                         new MatrixNumberToDimension
                         {
                             Dimension = PointDimension.X,
-                            MatrixNumbers = new List<int>
+                            IndexInContainer = new List<int>
                             {
                                 5, 6, 7, 8, 9
                             }

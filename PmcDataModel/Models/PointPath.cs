@@ -1,10 +1,25 @@
 ﻿namespace PmcDataModel.Models
 {
+    /// <summary>
+    /// Represent path to specific point (contains matrix and position indexes)
+    /// </summary>
     public class PointPath
     {
-        public int? MatrixNumber { get; set; }
-        public int PositionNumber { get; set; }
+        /// <summary>
+        /// Matrix index inside container
+        /// </summary>
+        public int? IndexInContainer { get; set; }
 
+        /// <summary>
+        /// Position index inside matrix
+        /// </summary>
+        public int IndexInMatrix { get; set; }
+
+        /// <summary>
+        /// Compare two PointPath values
+        /// </summary>
+        /// <param name="other">point with which is compared</param>
+        /// <returns>Comparison result</returns>
         public bool Equals(PointPath other)
         {
             if (other == null)
@@ -12,12 +27,12 @@
                 return false;
             }
 
-            if (other.MatrixNumber == null || MatrixNumber == null)
+            if (other.IndexInContainer == null || IndexInContainer == null)
             {
-                return other.PositionNumber == PositionNumber;
+                return other.IndexInMatrix == IndexInMatrix;
             }
 
-            return other.MatrixNumber == MatrixNumber && other.PositionNumber == PositionNumber;
+            return other.IndexInContainer == IndexInContainer && other.IndexInMatrix == IndexInMatrix;
         }
     }
 }

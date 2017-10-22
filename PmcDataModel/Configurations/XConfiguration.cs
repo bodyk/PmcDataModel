@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace PmcDataModel.Configurations
 {
+    /// <summary>
+    /// Store XRule collection and DefaultCountPoints 
+    /// </summary>
     public class XConfiguration
     {
+        /// <summary>
+        /// Default value for points count
+        /// </summary>
         public int DefaultCountPoints { get; set; } = 2;
 
+        /// <summary>
+        /// XRule collection
+        /// </summary>
         public List<XRule> Rules { get; set; }
     }
 }
