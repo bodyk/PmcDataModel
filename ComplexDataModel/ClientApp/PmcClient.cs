@@ -94,6 +94,8 @@ namespace ClientApp
             Developer<decimal> dev = new ContainerCollectionDeveloper<decimal>(conf);
             var containers = dev.Create(new decimal(150));
 
+            Console.WriteLine("Example 1: ");
+
             Console.WriteLine($"Count containers: {containers.Count}");//3
             Console.WriteLine($"Count matrices in each container: {containers[0].Count}");//2
             Console.WriteLine($"First matrix dimension: {containers[0][0].Dimension}");//XY
@@ -104,8 +106,8 @@ namespace ClientApp
             Console.WriteLine($"Position 1 of the X data contains {containers[0][1][0].Count} points");//numerical value, 1 at this case
             Console.WriteLine($"Position 2 of the X data contains {containers[0][1][1].Count} points");//numerical value, 1 at this case
             Console.WriteLine($"Position 3 and other of the X data contains {containers[0][1][2].Count} points");//0
-            Console.WriteLine($"Data value at 1 container, 1 matrix, 1 position, 1 point, X: {containers[0][0][0][0].DataValue[0]}");//0
 
+            Console.WriteLine($"Data value at 1 container, 1 matrix, 1 position, 1 point, X: {containers[0][0][0][0].DataValue[0]}");//150
 
             //Uncomment line below to watch all data
 
@@ -151,6 +153,8 @@ namespace ClientApp
             Developer<double> dev = new ContainerCollectionDeveloper<double>(conf);
             var containers = dev.Create(10.5);
 
+            Console.WriteLine("Example 2: ");
+
             Console.WriteLine($"Count containers: {containers.Count}");//10
             Console.WriteLine($"Count matrices in each container: {containers[0].Count}");//10
 
@@ -158,9 +162,7 @@ namespace ClientApp
             {
                 Console.WriteLine($"{i} matrix dimension: {containers[0][i].Dimension}");// First 5 - XY, other - X
             }
-
-            Console.WriteLine($"Data value at 1 container, 1 matrix, 1 position, 1 point, X: {containers[0][0][0][0].DataValue[0]}");//0
-
+            
 
             //Uncomment line below to watch all data
 

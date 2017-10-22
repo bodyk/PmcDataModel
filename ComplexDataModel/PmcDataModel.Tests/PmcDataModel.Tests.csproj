@@ -51,6 +51,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PmcConfigurationsExample1Tests.cs" />
+    <Compile Include="PmcConfigurationsExample2Tests.cs" />
     <Compile Include="PmcSimpleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
