@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PmcDataModel</name>
+    </assembly>
+    <members>
+        <member name="T:PmcDataModel.Configurations.MatrixConfiguration">
+            <summary>
+            Configuration which show relation between matrix number and point dimension
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.MatrixConfiguration.DefaultPointDimension">
+            <summary>
+            Default value for point dimension
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.MatrixConfiguration.MatrixNumberToDimensionRules">
+            <summary>
+            Relation between matrix number and point dimension
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.XConfiguration">
+            <summary>
+            Store XRule collection and DefaultCountPoints 
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XConfiguration.DefaultCountPoints">
+            <summary>
+            Default value for points count
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XConfiguration.Rules">
+            <summary>
+            XRule collection
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.XRule">
+            <summary>
+            Represent XRule which describe in requirements
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XRule.Path">
+            <summary>
+            Path to Point
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XRule.CountPoints">
+            <summary>
+            Count point instances
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.XyConfiguration">
+            <summary>
+            Store XyRule collection and DefaultCountPoints 
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyConfiguration.DefaultCountPoints">
+            <summary>
+            Default value for points count
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyConfiguration.Rules">
+            <summary>
+            XyRule collection
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.XyRule">
+            <summary>
+            Represent XyRule which describe in requirements
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyRule.Path">
+            <summary>
+            Path to Point
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyRule.CountPoints">
+            <summary>
+            Count point instances
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.XyzConfiguration">
+            <summary>
+            Store XyzRule collection and DefaultCountPositions 
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyzConfiguration.DefaultCountPositions">
+            <summary>
+            Default value for positions count
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyzConfiguration.Rules">
+            <summary>
+            XyzRule collection
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.XyzRule">
+            <summary>
+            Represent XyzRule which describe in requirements
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyzRule.IndexInContainer">
+            <summary>
+            Matrix index inside container
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.XyzRule.CountPositions">
+            <summary>
+            Count position instances
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Configurations.PmcConfiguration">
+            <summary>
+            Handle all configurations
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.CountContainers">
+            <summary>
+            Count Containers in collection
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.CountMatrices">
+            <summary>
+            Count Matrices in collection
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.CountPositions">
+            <summary>
+            Count Positions in collection
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.CountPoints">
+            <summary>
+            Count Points in collection
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.MatrixConfig">
+            <summary>
+            Represent configuration for matrices
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.XConfig">
+            <summary>
+            Store XRule collection and DefaultCountPoints 
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.XyConfig">
+            <summary>
+            Store XyRule collection and DefaultCountPoints 
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Configurations.PmcConfiguration.XyzConfig">
+            <summary>
+            Store XyzRule collection and DefaultCountPoints 
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Configurations.PmcConfiguration.GetPointDimension(System.Int32)">
+            <summary>
+            Helper method to get dimension base on matrix index inside container
+            </summary>
+            <param name="indexInContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PmcDataModel.Configurations.PmcConfiguration.GetCountPointsXyzRule(System.Int32)">
+            <summary>
+            Helper method to get points count base on matrix index inside container and XyzRule
+            </summary>
+            <param name="indexInContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PmcDataModel.Configurations.PmcConfiguration.GetCountPointsXyAndXRule(PmcDataModel.Models.Collections.PointDimension,System.Int32,System.Int32)">
+            <summary>
+            Helper method to get points count base on matrix index inside container and XyRule, XRule
+            </summary>
+            <param name="dimension"></param>
+            <param name="indexInContainer"></param>
+            <param name="indexInMatrix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PmcDataModel.ContainerCollectionDeveloper`1">
+            <summary>
+            Factory Method realization
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:PmcDataModel.ContainerCollectionDeveloper`1.#ctor(PmcDataModel.Configurations.PmcConfiguration)">
+            <summary>
+            Handle configuration by constructor
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:PmcDataModel.ContainerCollectionDeveloper`1.Create(`0)">
+            <inheritdoc />
+        </member>
+        <member name="T:PmcDataModel.Developer`1">
+            <summary>
+            Abstract base class to provide factory method
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:PmcDataModel.Developer`1.Config">
+            <summary>
+            Value to store all configuration properties
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Developer`1.#ctor(PmcDataModel.Configurations.PmcConfiguration)">
+            <summary>
+            Init configuration from constructor
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:PmcDataModel.Developer`1.Create(`0)">
+            <summary>
+            Method which return Pmc instance 
+            </summary>
+            <param name="value">Parametrized value(int, double or decimal)</param>
+            <returns>Pmc instance</returns>
+        </member>
+        <member name="T:PmcDataModel.Exceptions.ContainerIndexOutOfRangeException">
+            <summary>
+            Exception to show out of range in custom collections
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Exceptions.ContainerIndexOutOfRangeException.#ctor(System.Int32,System.String)">
+            <summary>
+            Form error message and pass to base constructor
+            </summary>
+            <param name="index"></param>
+            <param name="typeName"></param>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.ConfigurableCollection`1">
+            <summary>
+            Base class for all custom collections
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.ConfigurableCollection`1.Count">
+            <summary>
+            Count elements inside collection
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.ConfigurableCollection`1.Config">
+            <summary>
+            Contain all data configuration
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.ConfigurableCollection`1.DataValue">
+            <summary>
+            Some numeric value, which will be inside containers
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.ConfigurableCollection`1.#ctor(PmcDataModel.Configurations.PmcConfiguration,`0)">
+            <summary>
+            Handle required params, ConfigurableCollection Constructor
+            </summary>
+            <param name="config">Contain all data configuration</param>
+            <param name="value">Some numeric value, which will be inside containers</param>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.ConfigurableCollection`1.IsValidIndex(System.Int32)">
+            <summary>
+            Check is index is not out of collection range
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.Container`1">
+            <summary>
+            Collection with Matrices
+            </summary>
+            <typeparam name="T">Stored datatype</typeparam>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Container`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Container`1.#ctor(PmcDataModel.Configurations.PmcConfiguration,`0,System.Int32)">
+            <summary>
+            Container Constructor
+            </summary>
+            <param name="config"></param>
+            <param name="value"></param>
+            <param name="indexInPmc"></param>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Container`1.Item(System.Int32)">
+            <summary>
+            Indexer
+            </summary>
+            <param name="index">Special index</param>
+            <exception cref="T:PmcDataModel.Exceptions.ContainerIndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Container`1.GetEnumerator">
+            <summary>
+            Returns enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.Matrix`1">
+            <summary>
+            Collection with Positions
+            </summary>
+            <typeparam name="T">Stored datatype</typeparam>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Matrix`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Matrix`1.Dimension">
+            <summary>
+            Point dimension
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Matrix`1.#ctor(PmcDataModel.Configurations.PmcConfiguration,`0,System.Int32,System.Int32)">
+            <summary>
+            Matrix Constructor
+            </summary>
+            <param name="config"></param>
+            <param name="value"></param>
+            <param name="indexInPmc"></param>
+            <param name="indexInContainer"></param>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Matrix`1.Item(System.Int32)">
+            <summary>
+            Indexer
+            </summary>
+            <param name="index">Special index</param>
+            <exception cref="T:PmcDataModel.Exceptions.ContainerIndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Matrix`1.GetEnumerator">
+            <summary>
+            Returns enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.PointDimension">
+            <summary>
+            Represent enumeration of point dimensions
+            </summary>
+        </member>
+        <member name="F:PmcDataModel.Models.Collections.PointDimension.X">
+            <summary>
+            1D dimension
+            </summary>
+        </member>
+        <member name="F:PmcDataModel.Models.Collections.PointDimension.Xy">
+            <summary>
+            2D dimension
+            </summary>
+        </member>
+        <member name="F:PmcDataModel.Models.Collections.PointDimension.Xyz">
+            <summary>
+            3D dimension
+            </summary>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.Pmc`1">
+            <summary>
+            Main collection with containers
+            </summary>
+            <typeparam name="T">Stored datatype</typeparam>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Pmc`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Pmc`1.#ctor(PmcDataModel.Configurations.PmcConfiguration,`0)">
+            <summary>
+            Pmc Constructor
+            </summary>
+            <param name="config"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Pmc`1.Item(System.Int32)">
+            <summary>
+            Indexer
+            </summary>
+            <param name="index">Special index</param>
+            <exception cref="T:PmcDataModel.Exceptions.ContainerIndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Pmc`1.GetEnumerator">
+            <summary>
+            Returns enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.Point`1">
+            <summary>
+            Collection with generic numeral type(number, decimal, double)
+            </summary>
+            <typeparam name="T">Stored datatype</typeparam>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Point`1.DataValue">
+            <summary>
+            1, 2 or 3 values depend on dimension
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Point`1.Dimension">
+            <summary>
+            (X, XY, XYZ)
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Point`1.#ctor(PmcDataModel.Models.Collections.PointDimension,`0)">
+            <summary>
+            Point Constructor
+            </summary>
+            <param name="dimension"></param>
+            <param name="dataValue"></param>
+        </member>
+        <member name="T:PmcDataModel.Models.Collections.Position`1">
+            <summary>
+            Collection with Points
+            </summary>
+            <typeparam name="T">Stored datatype</typeparam>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Position`1.Dimension">
+            <summary>
+            (X, XY, XYZ)
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Position`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Position`1.#ctor(PmcDataModel.Configurations.PmcConfiguration,`0,System.Int32,System.Int32,System.Int32,PmcDataModel.Models.Collections.PointDimension)">
+            <summary>
+            Position Constructor
+            </summary>
+            <param name="config"></param>
+            <param name="value"></param>
+            <param name="indexInPmc"></param>
+            <param name="indexInContainer"></param>
+            <param name="indexInMatrix"></param>
+            <param name="dimension"></param>
+        </member>
+        <member name="P:PmcDataModel.Models.Collections.Position`1.Item(System.Int32)">
+            <summary>
+            Indexer
+            </summary>
+            <param name="index">Special index</param>
+            <exception cref="T:PmcDataModel.Exceptions.ContainerIndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:PmcDataModel.Models.Collections.Position`1.GetEnumerator">
+            <summary>
+            Returns enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PmcDataModel.Models.PointPath">
+            <summary>
+            Represent path to specific point (contains matrix and position indexes)
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Models.PointPath.IndexInContainer">
+            <summary>
+            Matrix index inside container
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.Models.PointPath.IndexInMatrix">
+            <summary>
+            Position index inside matrix
+            </summary>
+        </member>
+        <member name="M:PmcDataModel.Models.PointPath.Equals(PmcDataModel.Models.PointPath)">
+            <summary>
+            Compare two PointPath values
+            </summary>
+            <param name="other">point with which is compared</param>
+            <returns>Comparison result</returns>
+        </member>
+        <member name="T:PmcDataModel.RuleHelpers.MatrixNumberToDimension">
+            <summary>
+            IndexInContainer To Dimension relation
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.RuleHelpers.MatrixNumberToDimension.IndexInContainer">
+            <summary>
+            Matrix indexes inside containers
+            </summary>
+        </member>
+        <member name="P:PmcDataModel.RuleHelpers.MatrixNumberToDimension.Dimension">
+            <summary>
+            Point dimension (X, XY, XYZ)
+            </summary>
+        </member>
+    </members>
+</doc>

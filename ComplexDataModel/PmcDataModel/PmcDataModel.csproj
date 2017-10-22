@@ -67,7 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleHelpers\MatrixNumberToDimension.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="PmcDataModel.xml" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
