@@ -32,7 +32,7 @@ namespace PmcDataModel.Configurations
         /// <summary>
         /// Represent configuration for matrices
         /// </summary>
-        public MatrixConfiguration MatrixConfig { get; set; }
+        public MatrixConfiguration MatrixConfig { get; set; } = new MatrixConfiguration();
 
         /// <summary>
         /// Store XRule collection and DefaultCountPoints 
@@ -73,7 +73,7 @@ namespace PmcDataModel.Configurations
             {
                 var customPositionCount = XyzConfig.Rules?.FirstOrDefault(r => r.IndexInContainer == indexInContainer)?.CountPositions;
 
-                return customPositionCount ?? XyzConfig.DefaultCountPositions;
+                return customPositionCount ?? XyzConfig.DefaultCountPositions ?? CountPositions;
             }
             else
             {
@@ -102,7 +102,7 @@ namespace PmcDataModel.Configurations
 
                     var customPointsNumber = XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
-                    return customPointsNumber ?? XyConfig.DefaultCountPoints;
+                    return customPointsNumber ?? XyConfig.DefaultCountPoints ?? CountPoints;
                 }
                 case PointDimension.X:
                 {
@@ -114,7 +114,7 @@ namespace PmcDataModel.Configurations
 
                     var customPointsNumber = XConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
-                    return customPointsNumber ?? XyConfig.DefaultCountPoints;
+                    return customPointsNumber ?? XyConfig.DefaultCountPoints ?? CountPoints;
                 }
                 default:
                     return CountPoints;

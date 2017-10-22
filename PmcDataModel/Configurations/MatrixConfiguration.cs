@@ -18,6 +18,6 @@ namespace PmcDataModel.Configurations
         /// <summary>
         /// Relation between matrix number and point dimension
         /// </summary>
-        public List<MatrixNumberToDimension> MatrixNumberToDimensionRules { get; set; }
+        public List<MatrixNumberToDimension> MatrixNumberToDimensionRules { get; set; } = new List<MatrixNumberToDimension>();
     }
 }

@@ -14,7 +14,7 @@ namespace PmcDataModel.Configurations
         /// <summary>
         /// Default value for points count
         /// </summary>
-        public int DefaultCountPoints { get; set; } = 2;
+        public int? DefaultCountPoints { get; set; }
 
         /// <summary>
         /// XRule collection

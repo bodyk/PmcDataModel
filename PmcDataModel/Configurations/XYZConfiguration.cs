@@ -10,7 +10,7 @@ namespace PmcDataModel.Configurations
         /// <summary>
         /// Default value for positions count
         /// </summary>
-        public int DefaultCountPositions { get; set; } = 2;
+        public int? DefaultCountPositions { get; set; }
 
         /// <summary>
         /// XyzRule collection
