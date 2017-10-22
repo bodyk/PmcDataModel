@@ -9,10 +9,16 @@ namespace PmcDataModel
     /// <typeparam name="T"></typeparam>
     public abstract class Developer<T>
     {
+        #region Properties
+
         /// <summary>
         /// Value to store all configuration properties
         /// </summary>
         public PmcConfiguration Config { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Init configuration from constructor
@@ -23,11 +29,17 @@ namespace PmcDataModel
             Config = config;
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
         /// Method which return Pmc instance 
         /// </summary>
         /// <param name="value">Parametrized value(int, double or decimal)</param>
         /// <returns>Pmc instance</returns>
         public abstract Pmc<T> Create(T value);
+
+        #endregion
     }
 }

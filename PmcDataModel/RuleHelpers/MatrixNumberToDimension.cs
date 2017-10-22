@@ -8,6 +8,8 @@ namespace PmcDataModel.RuleHelpers
     /// </summary>
     public class MatrixNumberToDimension
     {
+        #region Properties
+
         /// <summary>
         /// Matrix indexes inside containers
         /// </summary>
@@ -17,5 +19,7 @@ namespace PmcDataModel.RuleHelpers
         /// Point dimension (X, XY, XYZ)
         /// </summary>
         public PointDimension Dimension { get; set; }
+
+        #endregion
     }
 }

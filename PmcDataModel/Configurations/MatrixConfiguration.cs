@@ -9,6 +9,8 @@ namespace PmcDataModel.Configurations
     /// </summary>
     public class MatrixConfiguration
     {
+        #region Properties
+
         /// <summary>
         /// Default value for point dimension
         /// </summary>
@@ -19,5 +21,7 @@ namespace PmcDataModel.Configurations
         /// Relation between matrix number and point dimension
         /// </summary>
         public List<MatrixNumberToDimension> MatrixNumberToDimensionRules { get; set; } = new List<MatrixNumberToDimension>();
+
+        #endregion
     }
 }

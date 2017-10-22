@@ -10,6 +10,8 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Point<T>
     {
+        #region Properties
+
         /// <summary>
         /// 1, 2 or 3 values depend on dimension
         /// </summary>
@@ -19,6 +21,10 @@ namespace PmcDataModel.Models.Collections
         /// (X, XY, XYZ)
         /// </summary>
         public PointDimension Dimension { get; private set; }
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Point Constructor
@@ -31,6 +37,10 @@ namespace PmcDataModel.Models.Collections
 
             FormPoint(dataValue);
         }
+
+        #endregion
+
+        #region Private Methods
 
         private void FormPoint(T dataValue)
         {
@@ -49,5 +59,7 @@ namespace PmcDataModel.Models.Collections
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        #endregion
     }
 }

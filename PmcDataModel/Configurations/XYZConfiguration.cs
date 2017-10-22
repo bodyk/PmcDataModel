@@ -7,6 +7,8 @@ namespace PmcDataModel.Configurations
     /// </summary>
     public class XyzConfiguration
     {
+        #region Properties
+
         /// <summary>
         /// Default value for positions count
         /// </summary>
@@ -16,5 +18,7 @@ namespace PmcDataModel.Configurations
         /// XyzRule collection
         /// </summary>
         public List<XyzRule> Rules { get; set; }
+
+        #endregion
     }
 }

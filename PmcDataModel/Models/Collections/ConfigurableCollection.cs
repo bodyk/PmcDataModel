@@ -8,6 +8,8 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T"></typeparam>
     public abstract class ConfigurableCollection<T>
     {
+        #region Properties
+
         /// <summary>
         /// Count elements inside collection
         /// </summary>
@@ -22,7 +24,11 @@ namespace PmcDataModel.Models.Collections
         /// <summary>
         /// Some numeric value, which will be inside containers
         /// </summary>
-        public T DataValue { get; set; }
+        public T DataValue { get; }
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Handle required params, ConfigurableCollection Constructor
@@ -35,6 +41,10 @@ namespace PmcDataModel.Models.Collections
             DataValue = value;
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
         /// Check is index is not out of collection range
         /// </summary>
@@ -44,5 +54,7 @@ namespace PmcDataModel.Models.Collections
         {
             return i < Count;
         }
+
+        #endregion
     }
 }

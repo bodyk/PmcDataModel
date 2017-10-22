@@ -5,6 +5,8 @@
     /// </summary>
     public class PointPath
     {
+        #region Properties
+
         /// <summary>
         /// Matrix index inside container
         /// </summary>
@@ -14,6 +16,10 @@
         /// Position index inside matrix
         /// </summary>
         public int IndexInMatrix { get; set; }
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Compare two PointPath values
@@ -34,5 +40,7 @@
 
             return other.IndexInContainer == IndexInContainer && other.IndexInMatrix == IndexInMatrix;
         }
+
+        #endregion
     }
 }

@@ -11,6 +11,8 @@ namespace PmcDataModel.Configurations
     /// </summary>
     public class XConfiguration
     {
+        #region Properties
+
         /// <summary>
         /// Default value for points count
         /// </summary>
@@ -20,5 +22,7 @@ namespace PmcDataModel.Configurations
         /// XRule collection
         /// </summary>
         public List<XRule> Rules { get; set; }
+
+        #endregion
     }
 }

@@ -31,8 +31,27 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Pmc<T> : ConfigurableCollection<T>, IIndexable<Container<T>>, IEnumerable<Container<T>>
     {
+        #region Properties
+
         /// <inheritdoc />
         public override int Count => Config.CountContainers;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Pmc Constructor
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="value"></param>
+        public Pmc(PmcConfiguration config, T value) : base(config, value)
+        {
+        }
+
+        #endregion
+
+        #region Indexable and foreach access methods
 
         /// <summary>
         /// Indexer
@@ -53,15 +72,6 @@ namespace PmcDataModel.Models.Collections
         }
 
         /// <summary>
-        /// Pmc Constructor
-        /// </summary>
-        /// <param name="config"></param>
-        /// <param name="value"></param>
-        public Pmc(PmcConfiguration config, T value) : base(config, value)
-        {
-        }
-
-        /// <summary>
         /// Returns enumerator
         /// </summary>
         /// <returns></returns>
@@ -77,5 +87,7 @@ namespace PmcDataModel.Models.Collections
         {
             return GetEnumerator();
         }
+
+        #endregion
     }
 }

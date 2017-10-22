@@ -5,6 +5,8 @@
     /// </summary>
     public class XyzRule
     {
+        #region Properties
+
         /// <summary>
         /// Matrix index inside container
         /// </summary>
@@ -14,5 +16,7 @@
         /// Count position instances
         /// </summary>
         public int CountPositions { get; set; }
+
+        #endregion
     }
 }

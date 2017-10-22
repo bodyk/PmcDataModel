@@ -7,6 +7,8 @@ namespace PmcDataModel.Exceptions
     /// </summary>
     public class ContainerIndexOutOfRangeException : Exception
     {
+        #region Constructor
+
         /// <summary>
         /// Form error message and pass to base constructor
         /// </summary>
@@ -15,7 +17,9 @@ namespace PmcDataModel.Exceptions
         public ContainerIndexOutOfRangeException(int index, string typeName)
             : base($"{index} is invalid {typeName} index")
         {
-            
+
         }
+
+        #endregion
     }
 }

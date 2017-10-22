@@ -9,6 +9,8 @@ namespace PmcDataModel.Configurations
     /// </summary>
     public class PmcConfiguration
     {
+        #region Properties
+
         /// <summary>
         /// Count Containers in collection
         /// </summary>
@@ -48,6 +50,10 @@ namespace PmcDataModel.Configurations
         /// Store XyzRule collection and DefaultCountPoints 
         /// </summary>
         public XyzConfiguration XyzConfig { get; set; } = new XyzConfiguration();
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Helper method to get dimension base on matrix index inside container
@@ -93,32 +99,34 @@ namespace PmcDataModel.Configurations
             switch (dimension)
             {
                 case PointDimension.Xy:
-                {
-                    var path = new PointPath
                     {
-                        IndexInContainer = indexInContainer,
-                        IndexInMatrix = indexInMatrix
-                    };
+                        var path = new PointPath
+                        {
+                            IndexInContainer = indexInContainer,
+                            IndexInMatrix = indexInMatrix
+                        };
 
-                    var customPointsNumber = XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
+                        var customPointsNumber = XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
-                    return customPointsNumber ?? XyConfig.DefaultCountPoints ?? CountPoints;
-                }
+                        return customPointsNumber ?? XyConfig.DefaultCountPoints ?? CountPoints;
+                    }
                 case PointDimension.X:
-                {
-                    var path = new PointPath
                     {
-                        IndexInContainer = indexInContainer,
-                        IndexInMatrix = indexInMatrix
-                    };
+                        var path = new PointPath
+                        {
+                            IndexInContainer = indexInContainer,
+                            IndexInMatrix = indexInMatrix
+                        };
 
-                    var customPointsNumber = XConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
+                        var customPointsNumber = XConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
-                    return customPointsNumber ?? XyConfig.DefaultCountPoints ?? CountPoints;
-                }
+                        return customPointsNumber ?? XyConfig.DefaultCountPoints ?? CountPoints;
+                    }
                 default:
                     return CountPoints;
             }
         }
+
+        #endregion
     }
 }

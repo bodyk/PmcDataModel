@@ -13,8 +13,14 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Matrix<T> : ConfigurableCollection<T>, IIndexable<Position<T>>, IEnumerable<Position<T>>
     {
+        #region Private Members
+
         private readonly int _indexInPmc;
         private readonly int _indexInContainer;
+
+        #endregion
+
+        #region Properties
 
         /// <inheritdoc />
         public override int Count => GetCountPoints();
@@ -23,6 +29,29 @@ namespace PmcDataModel.Models.Collections
         /// Point dimension
         /// </summary>
         public PointDimension Dimension { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Matrix Constructor
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="value"></param>
+        /// <param name="indexInPmc"></param>
+        /// <param name="indexInContainer"></param>
+        public Matrix(PmcConfiguration config, T value, int indexInPmc, int indexInContainer) : base(config, value)
+        {
+            _indexInPmc = indexInPmc;
+            _indexInContainer = indexInContainer;
+
+            Dimension = GetPointDimension();
+        }
+
+        #endregion
+
+        #region Indexable and foreach access methods
 
         /// <summary>
         /// Indexer
@@ -59,20 +88,9 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        /// <summary>
-        /// Matrix Constructor
-        /// </summary>
-        /// <param name="config"></param>
-        /// <param name="value"></param>
-        /// <param name="indexInPmc"></param>
-        /// <param name="indexInContainer"></param>
-        public Matrix(PmcConfiguration config, T value, int indexInPmc, int indexInContainer) : base(config, value)
-        {
-            _indexInPmc = indexInPmc;
-            _indexInContainer = indexInContainer;
+        #endregion
 
-            Dimension = GetPointDimension();
-        }
+        #region Private Methods
 
         private PointDimension GetPointDimension()
         {
@@ -83,5 +101,7 @@ namespace PmcDataModel.Models.Collections
         {
             return Config.GetCountPointsXyzRule(_indexInContainer);
         }
+
+        #endregion
     }
 }

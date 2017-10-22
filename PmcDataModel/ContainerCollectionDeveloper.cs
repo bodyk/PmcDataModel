@@ -9,6 +9,7 @@ namespace PmcDataModel
     /// <typeparam name="T"></typeparam>
     public class ContainerCollectionDeveloper<T>: Developer<T> where T: struct 
     {
+        #region Constructor
 
         /// <summary>
         /// Handle configuration by constructor
@@ -18,10 +19,16 @@ namespace PmcDataModel
         {
         }
 
+        #endregion
+
+        #region Methods
+
         /// <inheritdoc />
         public override Pmc<T> Create(T value)
         {
             return new Pmc<T>(Config, value);
         }
+
+        #endregion
     }
 }

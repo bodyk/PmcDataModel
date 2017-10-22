@@ -12,6 +12,8 @@ namespace PmcDataModel.Configurations
     /// </summary>
     public class XRule
     {
+        #region Properties
+
         /// <summary>
         /// Path to Point
         /// </summary>
@@ -21,5 +23,7 @@ namespace PmcDataModel.Configurations
         /// Count point instances
         /// </summary>
         public int CountPoints { get; set; }
+
+        #endregion
     }
 }

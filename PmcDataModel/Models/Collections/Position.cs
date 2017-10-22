@@ -13,9 +13,15 @@ namespace PmcDataModel.Models.Collections
     /// <typeparam name="T">Stored datatype</typeparam>
     public class Position<T> : ConfigurableCollection<T>, IIndexable<Point<T>>, IEnumerable<Point<T>>
     {
+        #region Private Members
+
         private readonly int _indexInPmc;
         private readonly int _indexInContainer;
         private readonly int _indexInMatrix;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// (X, XY, XYZ)
@@ -24,6 +30,32 @@ namespace PmcDataModel.Models.Collections
 
         /// <inheritdoc />
         public override int Count => GetCountPoints();
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Position Constructor
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="value"></param>
+        /// <param name="indexInPmc"></param>
+        /// <param name="indexInContainer"></param>
+        /// <param name="indexInMatrix"></param>
+        /// <param name="dimension"></param>
+        public Position(PmcConfiguration config, T value, int indexInPmc, int indexInContainer, int indexInMatrix, PointDimension dimension) : base(config, value)
+        {
+            _indexInPmc = indexInPmc;
+            _indexInContainer = indexInContainer;
+            _indexInMatrix = indexInMatrix;
+
+            Dimension = dimension;
+        }
+
+        #endregion
+
+        #region Indexable and foreach access methods
 
         /// <summary>
         /// Indexer
@@ -60,27 +92,15 @@ namespace PmcDataModel.Models.Collections
             return GetEnumerator();
         }
 
-        /// <summary>
-        /// Position Constructor
-        /// </summary>
-        /// <param name="config"></param>
-        /// <param name="value"></param>
-        /// <param name="indexInPmc"></param>
-        /// <param name="indexInContainer"></param>
-        /// <param name="indexInMatrix"></param>
-        /// <param name="dimension"></param>
-        public Position(PmcConfiguration config, T value, int indexInPmc, int indexInContainer, int indexInMatrix, PointDimension dimension) : base(config, value)
-        {
-            _indexInPmc = indexInPmc;
-            _indexInContainer = indexInContainer;
-            _indexInMatrix = indexInMatrix;
+        #endregion
 
-            Dimension = dimension;
-        }
+        #region Private Methods
 
         private int GetCountPoints()
         {
             return Config.GetCountPointsXyAndXRule(Dimension, _indexInContainer, _indexInMatrix);
         }
+
+        #endregion
     }
 }
