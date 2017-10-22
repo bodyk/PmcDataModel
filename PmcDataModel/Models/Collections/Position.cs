@@ -58,7 +58,7 @@ namespace PmcDataModel.Models.Collections
 
         private int GetCountPoints()
         {
-            return Config.GetCountPointsXyRule(Dimension, _indexInContainer, _indexInMatrix);
+            return Config.GetCountPointsXyAndXRule(Dimension, _indexInContainer, _indexInMatrix);
         }
     }
 }

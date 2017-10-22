@@ -37,35 +37,36 @@ namespace PmcDataModel.Configurations
             }
         }
 
-        public int GetCountPointsXyRule(PointDimension dimension, int indexInContainer, int indexInMatrix)
+        public int GetCountPointsXyAndXRule(PointDimension dimension, int indexInContainer, int indexInMatrix)
         {
-            if (dimension == PointDimension.Xy)
+            switch (dimension)
             {
-                var path = new PointPath
+                case PointDimension.Xy:
                 {
-                    MatrixNumber = indexInContainer,
-                    PositionNumber = indexInMatrix
-                };
+                    var path = new PointPath
+                    {
+                        MatrixNumber = indexInContainer,
+                        PositionNumber = indexInMatrix
+                    };
 
-                var customPointsNumber = XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
+                    var customPointsNumber = XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
-                return customPointsNumber ?? XyConfig.DefaultCountPoints;
-            }
-            else if (dimension == PointDimension.X)
-            {
-                var path = new PointPath
+                    return customPointsNumber ?? XyConfig.DefaultCountPoints;
+                }
+                case PointDimension.X:
                 {
-                    MatrixNumber = indexInContainer,
-                    PositionNumber = indexInMatrix
-                };
+                    var path = new PointPath
+                    {
+                        MatrixNumber = indexInContainer,
+                        PositionNumber = indexInMatrix
+                    };
 
-                var customPointsNumber = XConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
+                    var customPointsNumber = XConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
-                return customPointsNumber ?? XyConfig.DefaultCountPoints;
-            }
-            else
-            {
-                return CountPoints;
+                    return customPointsNumber ?? XyConfig.DefaultCountPoints;
+                }
+                default:
+                    return CountPoints;
             }
         }
     }
