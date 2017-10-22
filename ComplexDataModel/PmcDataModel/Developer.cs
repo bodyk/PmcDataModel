@@ -14,7 +14,7 @@ namespace PmcDataModel
         /// <summary>
         /// Value to store all configuration properties
         /// </summary>
-        public PmcConfiguration Config { get; set; }
+        protected PmcConfiguration Config { get; set; }
 
         #endregion
 

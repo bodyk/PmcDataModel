@@ -18,7 +18,7 @@ namespace PmcDataModel.Models.Collections
         /// <summary>
         /// Contain all data configuration
         /// </summary>
-        public PmcConfiguration Config { get; set; }
+        protected PmcConfiguration Config { get; set; }
 
 
         /// <summary>
