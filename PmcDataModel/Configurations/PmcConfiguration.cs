@@ -11,8 +11,9 @@ namespace PmcDataModel.Configurations
         public int CountPositions { get; set; }
         public int CountPoints { get; set; }
         public MatrixConfiguration MatrixConfig { get; set; }
-        public XyConfiguration XyConfig { get; set; }
-        public XyzConfiguration XyzConfig { get; set; }
+        public XConfiguration XConfig { get; set; } = new XConfiguration();
+        public XyConfiguration XyConfig { get; set; } = new XyConfiguration();
+        public XyzConfiguration XyzConfig { get; set; } = new XyzConfiguration();
 
         public PointDimension GetPointDimension(int indexInContainer)
         {
@@ -47,6 +48,18 @@ namespace PmcDataModel.Configurations
                 };
 
                 var customPointsNumber = XyConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
+
+                return customPointsNumber ?? XyConfig.DefaultCountPoints;
+            }
+            else if (dimension == PointDimension.X)
+            {
+                var path = new PointPath
+                {
+                    MatrixNumber = indexInContainer,
+                    PositionNumber = indexInMatrix
+                };
+
+                var customPointsNumber = XConfig.Rules?.FirstOrDefault(r => r.Path.Equals(path))?.CountPoints;
 
                 return customPointsNumber ?? XyConfig.DefaultCountPoints;
             }

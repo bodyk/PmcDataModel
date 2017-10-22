@@ -17,6 +17,7 @@ namespace PmcDataModel.Models.Collections
         private readonly int _indexInContainer;
 
         public override int Count => GetCountPoints();
+        public PointDimension Dimension { get; set; }
 
         public Position<T> this[int index]
         {
@@ -35,7 +36,7 @@ namespace PmcDataModel.Models.Collections
         {
             for (var i = 0; i < Count; i++)
             {
-                yield return new Position<T>(Config, DataValue, _indexInPmc, _indexInContainer, i, GetPointDimension());
+                yield return new Position<T>(Config, DataValue, _indexInPmc, _indexInContainer, i, Dimension);
             }
         }
 
@@ -48,6 +49,8 @@ namespace PmcDataModel.Models.Collections
         {
             _indexInPmc = indexInPmc;
             _indexInContainer = indexInContainer;
+
+            Dimension = GetPointDimension();
         }
 
         private PointDimension GetPointDimension()

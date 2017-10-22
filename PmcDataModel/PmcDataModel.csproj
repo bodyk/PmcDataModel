@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\MatrixConfiguration.cs" />
+    <Compile Include="Configurations\XConfiguration.cs" />
+    <Compile Include="Configurations\XRule.cs" />
     <Compile Include="Configurations\XyConfiguration.cs" />
     <Compile Include="Configurations\XyRule.cs" />
     <Compile Include="Configurations\XyzConfiguration.cs" />
